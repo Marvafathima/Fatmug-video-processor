@@ -1,0 +1,94 @@
+
+{% extends 'base.html'%}
+{% load static %}
+
+{% block extraheaders %}
+<link type="text/css" href="{% static 'css/player.css' %}" rel="stylesheet" />
+<style>
+    .player-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .xdContainer {
+        max-width: 100%;
+        max-height: 80vh;
+        aspect-ratio: 16 / 9; 
+        background-color: #000;
+        position: relative;
+        margin: 0 auto;
+        overflow: hidden; 
+    }
+    .xdPlayer {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+    }
+    #language-select, #search-container, #search-results {
+        margin-bottom: 10px;
+    }
+    #search-results div {
+        cursor: pointer;
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    #search-results div:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+{% endblock extraheaders %}
+
+{% block main %}
+<div class="player-wrapper">
+    <div id="language-container"></div>
+    <div id="search-container"></div>
+    <div id="search-results"></div>
+    <div class="xdContainer">
+        <video class="xdPlayer" 
+               preload="auto"
+               poster="{{video.thumbnail.url}}">
+            <source src="{{video.file.url}}" type="video/mp4" />
+        </video>
+    </div>
+    <div id="controls-container"></div>
+</div>
+
+<!-- Hidden input to store languages data -->
+<input type="hidden" id="languages-data" value="{{ languages|join:',' }}">
+<input type="hidden" id="video-data" value="{{ video.id }}">
+{% endblock main %}
+
+{% block extrascripts %}
+<script src="{% static 'js/player.js' %}"></script>
+<script>
+    // Retrieve languages from the hidden input
+    const languagesString = document.getElementById('languages-data').value;
+    const languages = languagesString.split(',');
+    const videoId = document.getElementById('video-data').value;
+    // Initialize the player after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // The createLanguageDropdown and createSearchInput functions
+        // will be called within the player.js initialization
+        initializePlayer(languages, videoId);
+    });
+</script>
+{% endblock extrascripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

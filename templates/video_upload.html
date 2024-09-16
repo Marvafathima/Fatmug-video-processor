@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+          
+<h1>Upload Video</h1>
+<form method="post" action="{% url 'upload_video' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <button type="submit">Upload</button>
+</form> 
+</div>
+{% endblock main %}

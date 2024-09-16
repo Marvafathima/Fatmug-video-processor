@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+
+{%block main %}
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+            {% if user.is_superuser%} 
+            <h1>Welcome Admin</h1>
+            <p>Upload your videos to extract subtitles.</p>
+            {%else %}
+            <h1>Welcome {{user.name}}</h1>
+            <p>Watch videos and search subtitles.</p>
+            {%endif%}
+            <div class="d-flex">
+              {% if user.is_superuser%} 
+              <a href="{% url 'upload_video' %}" class="btn-get-started">Upload Videos</a>
+             
+              {% endif %}
+              <a href="{% url 'video_list' %}" class="btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>View Video</span></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+          </div>
+          {% endblock main %}     
+    
