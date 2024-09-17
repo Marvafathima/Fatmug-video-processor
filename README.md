@@ -1,7 +1,7 @@
 **Video Subtitle Processor**
 
 Description
-This project is a web application that allows admins to upload videos to process and extract subtitles. It features a login system for both administrators and regular users. Administrators have the ability to upload videos, while users can watch videos and search for subtitles.
+This project is a web application that allows admins to upload videos to process and extract subtitles. It features a login system for both administrators and regular users. Administrators have the ability to upload videos, while users can watch videos and search for subtitles.There is two apps for this project-app1 and video_app.app1 handles authentication and authorization of users such as login,signup,logout,while video_app includes video processing and subtitle extraction.
 
 Features
 
