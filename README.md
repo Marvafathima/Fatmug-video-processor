@@ -25,7 +25,7 @@ Docker Compose
 **Installation and Setup***
 
 1. Clone the repository:
-git clone https://github.com/Marvafathima/video_subtitle_processor.git
+git clone https://github.com/Marvafathima/Fatmug-video-processor.git
 cd video_subtitle_processor
 
 2.Create a .env file in the root directory of the project with the following content:
